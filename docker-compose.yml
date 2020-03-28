@@ -1,0 +1,27 @@
+version: '3'
+services:
+    # First Service/Container - Reach Web Application
+    react-web-app:
+        build: 
+            context: .              # current directory
+            dockerfile: Dockerfile.dev
+        ports:
+            - "3000:3000"           
+        # mount local folders as volumes inside container
+        volumes:                    
+            - /app/frontend/node_modules
+            - .:/app/frontend
+    
+    # Second Service/Container - Test Application
+    react-test-app:
+        build: 
+            context: .              # current directory
+            dockerfile: Dockerfile.dev
+            # mount local folders as volumes inside container
+        volumes:
+            - /app/frontend/node_modules
+            - .:/app/frontend
+        # Replace the start command with the test
+        command: ["npm", "run", "test"]
+
+

@@ -1,0 +1,21 @@
+# Baseline image
+FROM node:alpine
+
+# Set working directory
+WORKDIR '/app/frontend'
+
+#copy the pahcage definition file
+COPY package.json ./.
+
+# install npm
+RUN npm install
+
+# Do not copy rest of the files
+# use docker volume to refer to local file system
+
+# COPY . .
+
+# execute startup command
+CMD ["npm", "run", "start"]
+
+
