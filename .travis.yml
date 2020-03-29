@@ -10,11 +10,11 @@ services:
 
 # docker image name can be any lable, best practise username/reponame
 before_install:
-    - docker build -t BK39/docker-react -f Dockerfile.dev .
+    - docker build -t bk39-docker-react -f Dockerfile.dev .
 
 # Step 3 : Tell Travis how to run our test suite
 
 script:
-    - docker run -e CI=true BK39/docker-react npm run test
+    - docker run -e CI=true bk39-docker-react npm run test
     
 
