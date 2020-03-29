@@ -1,0 +1,20 @@
+# Step 1 : Tell Travis we need a copy of docker running
+# for docker - need sudo access
+
+sudo: required
+services: 
+    - docker
+
+# Setp 2 : Build our image using Dockerfile.dev (need for testing) 
+# and not Dockerfile (production only) as it does not have dependencies
+
+# docker image name can be any lable, best practise username/reponame
+before_install:
+    - docker build -t BK39/docker-react -f Dockerfile.dev .
+
+# Step 3 : Tell Travis how to run our test suite
+
+script:
+    - docker run -e CI=true BK39/docker-react npm run test
+    
+

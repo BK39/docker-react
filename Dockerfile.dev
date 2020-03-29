@@ -13,7 +13,7 @@ RUN npm install
 # Do not copy rest of the files
 # use docker volume to refer to local file system
 
-# COPY . .
+COPY . .
 
 # execute startup command
 CMD ["npm", "run", "start"]
